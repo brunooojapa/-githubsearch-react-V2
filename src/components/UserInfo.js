@@ -19,10 +19,12 @@ const UserInfo = ({ user, repos }) => {
 				<Divider />
 				<p style={styles.containerPrimary_bio}>{user.bio}</p>
 				<Divider />
-				<p>Followers: {user.followers}</p>
-				<p> Following: {user.following}</p>
+				<div style={styles.containerPrimary_follow}>
+					<p>Followers: {user.followers}</p>
+					<p> Following: {user.following}</p>
+				</div>
 				<Divider />
-				<p>Location:</p>
+				<p style={styles.containerPrimary_location}>Location:</p>
 				<Button
 					href={
 						'https://www.google.com.br/maps/place/' + user.location
@@ -69,7 +71,14 @@ const styles = {
 		fontSize: '18px'
 	},
 	containerPrimary_bio: {
+		paddingTop: '5px',
 		lineHeight: 'normal'
+	},
+	containerPrimary_follow: {
+		paddingTop: '5px'
+	},
+	containerPrimary_location: {
+		paddingTop: '5px'
 	}
 };
 
