@@ -1,7 +1,7 @@
 import React from 'react';
 import GitHubUser from '../services/GitHubUser';
 import { LinearProgress, Button } from '@material-ui/core';
-import { Alert } from './Alert';
+import SweetAlert from 'react-bootstrap-sweetalert/lib/dist/SweetAlert';
 
 class SearchUser extends React.Component {
 	state = {
@@ -30,6 +30,10 @@ class SearchUser extends React.Component {
 			.catch(error => {
 				this.setState({ show: true });
 				this.setState({ loading: false });
+				// set modal hide
+				setTimeout(() => {
+					this.setState({ show: false });
+				}, 2000);
 			});
 
 		GitHubUser.getReposByUsername(this.refs.username.value)
@@ -44,25 +48,30 @@ class SearchUser extends React.Component {
 			.catch(error => {
 				this.setState({ show: true });
 				this.setState({ loading: false });
+				// set modal hide
+				setTimeout(() => {
+					this.setState({ show: false });
+				}, 2000);
 			});
 	}
 
 	render() {
 		return (
 			<div style={styles.containerPrimary}>
-				<Alert
-					show={this.state.show}
-					title={'Algo está errado!'}
-					text={'Tente novamente'}
-					type={'error'}
-					onConfirm={() => this.setState({ show: false })}
-				/>
 				<img
 					style={styles.containerPrimary_image}
 					src={require('../assets/images/GitHub_Logo.png')}
 					alt="avatar"
 				/>
-
+				<SweetAlert
+					show={this.state.show}
+					title="Algo está errado!"
+					type={'error'}
+					showConfirm={false}
+					style={{ borderRadius: 0 }}
+				>
+					<span>Tente novamente</span>
+				</SweetAlert>
 				<h1
 					className="text-capitalize text-center"
 					style={styles.containerPrimary_title}
@@ -89,7 +98,7 @@ class SearchUser extends React.Component {
 								variant="contained"
 								style={styles.searchContainer_btn}
 							>
-								Search user
+								<i class="material-icons md-18">search</i>
 							</Button>
 						</div>
 
@@ -118,11 +127,13 @@ var styles = {
 	searchContainer_btn: {
 		width: '10%',
 		borderRadius: '0',
-		minHeight: '20%'
+		minHeight: '20%',
+		height: '40px'
 	},
 	searchContainer_input: {
 		width: '90%',
 		borderRadius: '0',
+		height: '40px',
 		minHeight: '20%'
 	}
 };
