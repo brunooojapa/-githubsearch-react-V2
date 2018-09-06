@@ -6,7 +6,7 @@ import { Button, Divider } from '@material-ui/core';
 const UserInfo = ({ user, repos }) => {
 	var userInfo = user ? (
 		<div className="row">
-			<div className="col-lg-2">
+			<div className="col-lg-2 text-center">
 				<img
 					className="img-circle"
 					src={user.avatar_url}
@@ -20,8 +20,13 @@ const UserInfo = ({ user, repos }) => {
 				<p style={styles.containerPrimary_bio}>{user.bio}</p>
 				<Divider />
 				<div style={styles.containerPrimary_follow}>
-					<p>Followers: {user.followers}</p>
-					<p> Following: {user.following}</p>
+					<p>
+						<b>Followers: </b>
+						{user.followers}
+					</p>
+					<p>
+						<b>Following:</b> {user.following}
+					</p>
 				</div>
 				<Divider />
 				<Button
@@ -33,7 +38,7 @@ const UserInfo = ({ user, repos }) => {
 					variant="outlined"
 				>
 					<i class="material-icons md-12">location_on</i>
-					{user.location}
+					<b>{user.location}</b>
 				</Button>
 
 				<p>
@@ -71,17 +76,21 @@ const styles = {
 		fontSize: '20px'
 	},
 	containerPrimary_name: {
-		fontSize: '18px'
+		fontSize: '18px',
+		textAlign: 'left'
 	},
 	containerPrimary_bio: {
 		paddingTop: '5px',
-		lineHeight: 'normal'
+		lineHeight: 'normal',
+		textAlign: 'left'
 	},
 	containerPrimary_follow: {
-		paddingTop: '5px'
+		paddingTop: '5px',
+		textAlign: 'left'
 	},
 	containerPrimary_location: {
-		paddingTop: '5px'
+		paddingTop: '5px',
+		textAlign: 'left'
 	}
 };
 
