@@ -76,7 +76,7 @@ class SearchUser extends React.Component {
 					className="text-capitalize text-center"
 					style={styles.containerPrimary_title}
 				>
-					GitHub Search
+					GitHub Search User
 				</h1>
 
 				<div className="row">

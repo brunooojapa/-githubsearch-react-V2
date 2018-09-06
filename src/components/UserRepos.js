@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent } from '@material-ui/core';
 
 class UserRepos extends React.Component {
 	constructor(props) {
@@ -19,45 +19,45 @@ class UserRepos extends React.Component {
 			return (
 				<Card
 					key={key}
-					className="thumbnail col-lg-5"
+					className=" col-md-5"
 					style={styles.containerRepos}
 				>
 					<div className="caption">
-						<h3 style={styles.containerRepos__name}>
-							{repo.name}
-							<br />
-							<span
-								className="badge"
-								style={styles.containerRepos__star}
-							>
-								{repo.stargazers_count} STARS
-							</span>
-						</h3>
-						<p style={styles.containerRepos__description}>
-							{repo.description}
-						</p>
-						<p>
+						<CardContent>
+							<h3 style={styles.containerRepos__name}>
+								{repo.name}
+								<br />
+								<span
+									className="badge"
+									style={styles.containerRepos__star}
+								>
+									{repo.stargazers_count} STARS
+								</span>
+							</h3>
+							<p style={styles.containerRepos__description}>
+								{repo.description}
+							</p>
+						</CardContent>
+						<CardActions>
 							<Button
 								href={repo.html_url}
+								size="large"
+								color="secondary"
+								variant={'raised'}
 								style={styles.containerPrimary_btn}
-								color="primary"
-								variant="contained"
-								role="button"
 							>
 								Repository
 							</Button>
-							<br />
-							<br />
 							<Button
 								href={repo.html_url + '/issues'}
-								style={styles.containerPrimary_btn}
-								role="button"
+								size="large"
 								color="primary"
 								variant="outlined"
+								style={styles.containerPrimary_btn}
 							>
-								Issues ({repo.open_issues}){' '}
+								Issues ({repo.open_issues})
 							</Button>
-						</p>
+						</CardActions>
 					</div>
 				</Card>
 			);
@@ -70,15 +70,19 @@ class UserRepos extends React.Component {
 const styles = {
 	containerPrimary_btn: {
 		borderRadius: '0',
-		minHeight: '20%'
+		minHeight: '20%',
+		width: '100%'
 	},
 	containerRepos: {
-		display: 'flex',
-		marginLeft: '15px',
-		minHeight: '300px'
+		padding: '0',
+		margin: '15px',
+		paddingBottom: '20px',
+		minHeight: '250px'
 	},
 	containerRepos__name: {
-		fontSize: '20'
+		width: '100%',
+		fontSize: '20',
+		display: 'block'
 	},
 	containerRepos__description: {
 		minHeight: '80px',
