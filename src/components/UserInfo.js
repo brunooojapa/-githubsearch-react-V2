@@ -24,7 +24,6 @@ const UserInfo = ({ user, repos }) => {
 					<p> Following: {user.following}</p>
 				</div>
 				<Divider />
-				<p style={styles.containerPrimary_location}>Location:</p>
 				<Button
 					href={
 						'https://www.google.com.br/maps/place/' + user.location
@@ -33,8 +32,10 @@ const UserInfo = ({ user, repos }) => {
 					color="primary"
 					variant="outlined"
 				>
+					<i class="material-icons md-12">location_on</i>
 					{user.location}
 				</Button>
+
 				<p>
 					<Button
 						style={styles.containerPrimary_btn}
@@ -43,6 +44,7 @@ const UserInfo = ({ user, repos }) => {
 						color="primary"
 						variant="contained"
 					>
+						<i class="material-icons md-12">more_horiz</i>
 						View details
 					</Button>
 				</p>
@@ -60,6 +62,7 @@ const styles = {
 	containerPrimary_btn: {
 		borderRadius: '0',
 		minHeight: '20%',
+		marginTop: '10px',
 		marginBotton: '20px'
 	},
 
